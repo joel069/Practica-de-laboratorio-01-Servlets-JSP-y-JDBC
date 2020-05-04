@@ -34,6 +34,7 @@ public class Telefono implements Serializable{
 		this.operadora = operadora;
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "Telefono [codigo=" + codigo + ", numero=" + numero + ", tipo=" + tipo + ", operadora=" + operadora
