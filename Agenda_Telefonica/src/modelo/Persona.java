@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Persona implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private String cedula;
 	private String nombre;
 	private String apellido;
@@ -11,6 +12,24 @@ public class Persona implements Serializable{
 	private String clave;
 	
 	
+	
+	public Persona() {
+		
+	}
+	
+	
+	
+	public Persona(String cedula, String nombre, String apellido, String correo, String clave) {
+		super();
+		this.cedula = cedula;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.correo = correo;
+		this.clave = clave;
+	}
+
+
+
 	public String getCedula() {
 		return cedula;
 	}

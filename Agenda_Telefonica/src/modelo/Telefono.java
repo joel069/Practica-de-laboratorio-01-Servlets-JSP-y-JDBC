@@ -40,8 +40,4 @@ public class Telefono implements Serializable{
 		return "Telefono [codigo=" + codigo + ", numero=" + numero + ", tipo=" + tipo + ", operadora=" + operadora
 				+ "]";
 	}
-	
-	
-	
-	
 }
