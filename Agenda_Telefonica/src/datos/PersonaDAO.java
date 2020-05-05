@@ -1,5 +1,7 @@
 package datos;
 
-public class personaDAO {
+import modelo.Persona;
+
+public interface PersonaDAO extends GenericDAO<Persona , Integer>{
 
 }

@@ -1,5 +1,8 @@
 package datos;
 
-public class telefonoDAO {
+
+import modelo.Telefono;
+
+public interface TelefonoDAO extends GenericDAO<Telefono , Integer> {
 
 }
