@@ -13,5 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/Joel Vasquez/Desktop/UPS/8 ciclo/Plataformas Web/mysql-connector-java-8.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Joel Vasquez/Desktop/UPS/8 ciclo/Plataformas Web/Practicas/Github/Nueva carpeta/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC-master/WebContent/WEB-INF/lib/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Joel Vasquez/Desktop/UPS/8 ciclo/Plataformas Web/Practicas/Github/Nueva carpeta/Practica-de-laboratorio-01-Servlets-JSP-y-JDBC-master/WebContent/WEB-INF/lib/jstl-impl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

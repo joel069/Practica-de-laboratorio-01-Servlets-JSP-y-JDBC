@@ -1,6 +1,7 @@
 package datos;
 
 import jdbc.JDBCPersonaDAO;
+import jdbc.JDBCTelefonoDAO;
 
 public class JDBCDAOFactory extends DAOFactory{
 	
@@ -20,7 +21,4 @@ public class JDBCDAOFactory extends DAOFactory{
 		return new JDBCTelefonoDAO();
 	}
 	
-	
-	
-
 }
