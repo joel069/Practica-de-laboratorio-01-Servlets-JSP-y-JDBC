@@ -9,7 +9,7 @@ import datos.PersonaDAO;
 
 import modelo.Persona;
 
-public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, Integer> implements PersonaDAO {
+public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, String> implements PersonaDAO {
 	
 	@Override
 	public void createTable() {
@@ -26,9 +26,9 @@ public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, Integer> implements
 
 	
 	@Override
-	public Persona read(String cedula) {
+	public Persona read(String id) {
 		Persona persona = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM Persona WHERE Cedula=" + cedula);
+		ResultSet rs = conexionUno.query("SELECT * FROM Persona WHERE Cedula=" + id);
 		try {
 			if (rs != null && rs.next()) {
 				persona = new Persona(rs.getString("cedula"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"));
@@ -66,8 +66,37 @@ public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, Integer> implements
 			
 		}catch(SQLException e){
 			System.out.println(">>>WARNING (JDBCCategoryDAO:find): " + e.getMessage());
+		}for(Persona per: list) {
+			System.out.println(per.getCedula()+" , "+ per.getNombre() + "," + per.getApellido());
 		}
 		return list;
 	}
+	
+	@Override
+	public int buscar(String correo, String clave) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Correo:...."+ correo.toString());
+		int indice=0;
+		Persona per = null;
+		ResultSet rs = conexionUno.query("SELECT * FROM Persona where correo="+"'"+correo+"'"+"AND clave="+"'"+clave+"'");
+		try {
+			if( rs != null && rs.next()) {
+				indice=1;
+				
+			}
+		}catch(SQLException e) {
+			System.out.println(">>>WARNING (JDBCUsuarioDAO): buscar" + e.getMessage());
+		}
+		
+		return indice;
+	}
+	
+	@Override
+	public String cedula(String cedu) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
