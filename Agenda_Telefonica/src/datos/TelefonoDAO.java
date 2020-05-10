@@ -3,6 +3,6 @@ package datos;
 
 import modelo.Telefono;
 
-public interface TelefonoDAO extends GenericDAO<Telefono , Integer> {
+public interface TelefonoDAO extends GenericDAO<Telefono , String> {
 
 }

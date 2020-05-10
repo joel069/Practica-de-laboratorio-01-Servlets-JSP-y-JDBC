@@ -43,7 +43,7 @@ public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, String> implements 
 
 	@Override
 	public void update(Persona persona) {
-		  conexionUno.update("Update Persona SET nombre = ' " + persona.getNombre() + "', apellido = ' " 
+		  conexionUno.update("UPDATE Persona SET nombre = ' " + persona.getNombre() + "', apellido = ' " 
 				  + persona.getApellido() + "', correo= ' " + persona.getCorreo() + "', clave= ' "
 				  + persona.getClave() + "' WHERE cedula = " + persona.getCedula());
 		
@@ -65,7 +65,7 @@ public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, String> implements 
 			}
 			
 		}catch(SQLException e){
-			System.out.println(">>>WARNING (JDBCCategoryDAO:find): " + e.getMessage());
+			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
 		}for(Persona per: list) {
 			System.out.println(per.getCedula()+" , "+ per.getNombre() + "," + per.getApellido());
 		}
@@ -86,7 +86,7 @@ public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, String> implements 
 				
 			}
 		}catch(SQLException e) {
-			System.out.println(">>>WARNING (JDBCUsuarioDAO): buscar" + e.getMessage());
+			System.out.println(">>>WARNING (JDBCPersonaDAO): buscar" + e.getMessage());
 		}
 		
 		return indice;

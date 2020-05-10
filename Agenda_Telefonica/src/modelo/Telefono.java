@@ -9,6 +9,22 @@ public class Telefono implements Serializable{
 	private String tipo;
 	private String operadora;
 	
+	
+	
+	public Telefono() {
+	
+	}
+	
+	
+	public Telefono(int codigo, String numero, String tipo, String operadora) {
+		super();
+		this.codigo = codigo;
+		this.numero = numero;
+		this.tipo = tipo;
+		this.operadora = operadora;
+	}
+
+
 	public int getCodigo() {
 		return codigo;
 	}
