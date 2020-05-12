@@ -1,0 +1,43 @@
+body {
+    height: 50vh;
+    background: url("../img/fondo.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    margin-bottom:2em;
+    margin-bottom:2em;
+    margin-top: 12em;
+    margin-left: 18em;
+}
+
+.cuadro{
+	
+	
+	width: 300px;
+    height: 10px;
+    position: absolute;
+    top: 38%;
+    left: 63%;
+    transform: translate(-50%,-50%);
+    background:  rgba(105, 165, 235, 0.671);
+    text-align: center;
+    border-radius: 55px;
+}
+
+.boton{
+	
+	color= yellow;
+	width: 50px;
+	height: 10px;
+}
+.container{
+	background: rgb(0, 0, 0, .4); 
+	border-radius: 10px;
+	margin-top: 25px; 
+	
+}
+
+#account{
+	color: white;
+
+}

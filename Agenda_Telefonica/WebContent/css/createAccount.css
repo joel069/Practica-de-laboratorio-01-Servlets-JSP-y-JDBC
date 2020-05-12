@@ -1,0 +1,16 @@
+body {
+    height: 50vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    margin-bottom:2em;
+}
+
+.container{
+	background: rgb(0, 0, 0, .4); 
+	border-radius: 10px;
+	margin-top: 55px; 
+}
+#createAccount{
+	color: white;
+}

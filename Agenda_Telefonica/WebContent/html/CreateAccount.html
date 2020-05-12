@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link href="../css/estilos.css" rel="stylesheet" type="text/css" />
+<title>Create Account</title>
+</head>
+<body>
+
+	<!--Cabecera-->
+	<nav
+		class="navbar navbar-expand-lg navbar-dark gris row scrolling-navbar fixed-top">
+		<div class="collapse navbar-collapse ">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a href="../index.html" class="nav-link"
+					style="color: black;"><i  aria-hidden="true"></i>
+						<span class="clearfix d-none d-sm-inline-block">INICIO</span></a></li>
+			</ul>
+		</div>
+	</nav>
+	<!--Cabecera-->
+
+
+	<div class="container col-lg-4">
+		<form
+			action="/Practica_de_laboratorio_01_Servlets_JSP_y_JDBC/crearCuenta"
+			method="post">
+			<!-- /Practica_de_laboratorio_01_Servlets_JSP_y_JDBC/Registro -->
+
+			<input class="form-control" type="hidden" name="registro"
+				value="registro">
+
+			<div class="form-group text-center">
+				
+				<p>
+					<strong>Registrar Usuario</strong>
+				</p>
+			</div>
+
+
+			<div class="form-group">
+				<label>Cedula:</label> <input
+					class="form-control" type="text" name="cedula" placeholder="Cedula">
+			</div>
+
+
+			<div class="form-group">
+				<div class="form-group">
+					<!-- First name -->
+					</i> <label>Nombre:</label> <input
+						type="text" id="defaultRegisterFormFirstName" name="nombre"
+						class="form-control" placeholder="Nombre">
+				</div>
+				<div class="form-group" >
+					<!-- Last name -->
+					</i> <label>Apellido:</label> <input
+						type="text" id="defaultRegisterFormLastName" name="apellido"
+						class="form-control" placeholder="Apellido">
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				</i> <label>E-mail:</label> <input type="email"
+					id="defaultRegisterFormEmail" class="form-control mb-4"
+					name="email" placeholder="E-mail">
+			</div>
+
+
+			<div class="form-group">
+				</i> <label
+					>Clave:</label> <input type="password"
+					id="defaultLoginFormPassword" class="form-control mb-4"
+					name="passw" placeholder="Clave">
+			</div>
+			
+			<div class="form-group text-center">
+			<input  type="submit" name="accion"
+				value="Registar Usuario"> <br>
+				
+				</div>
+				
+			<p id="createAccount">
+				<a href="Login.html" style="margin-left: 130px; font-size: 25px;">Login</a>
+			</p>
+			
+
+
+
+
+		</form>
+	</div>
+
+
+
+
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+</body>
+</html>

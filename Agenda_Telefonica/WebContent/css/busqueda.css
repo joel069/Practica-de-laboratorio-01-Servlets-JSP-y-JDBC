@@ -1,0 +1,32 @@
+body {
+	
+}
+
+#corre {
+	color: white;
+	margin-right: 350px;
+	color: white;
+	font-size: 15px;
+}
+
+#corre:hover {
+	color: blue;
+	font-size: 20px;
+}
+
+.h5 {
+	color: white;
+	font-size: 20px;
+	font-family: 'Kaushan Script', cursive;
+}
+
+.numero {
+	color: white;
+	font-size: 17px;
+	font-family: 'Scada', sans-serif;
+}
+
+.numero:hover {
+	color: blue;
+	font-size: 24px;
+}

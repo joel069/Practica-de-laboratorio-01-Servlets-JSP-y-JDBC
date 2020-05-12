@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	
+<link href="../css/estilos.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+
+
+	<!--Cabecera-->
+	<nav
+		class="navbar navbar-expand-lg navbar-dark gris row scrolling-navbar fixed-top">
+		<div class="collapse navbar-collapse ">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a
+					href="/Practica_de_laboratorio_01_Servlets_JSP_y_JDBC/index.html"
+					class="nav-link" style="color: black;"><i 
+						aria-hidden="true"></i> <span
+						class="clearfix d-none d-sm-inline-block">Inicio</span></a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav nav-flex-icons ml-auto  mr-sm-2">
+				
+				<span
+						class="clearfix d-none d-sm-inline-block" style="font-size: 15px;">AGENDA TELEFONICA PLATAFORMAS WEB</span>
+			</ul>
+		</div>
+	</nav>
+	<!--Cabecera-->
+
+
+
+
+	<div class="container col-lg-2">
+
+		<input class="form-control" type="hidden" name="inicio" value="inicio">
+
+		<form action="/Practica_de_laboratorio_01_Servlets_JSP_y_JDBC/Login"
+			method="POST">
+			
+
+			<div class="form-group text-center">
+				
+				
+			
+				<label> Correo Electronico:</label> <input
+					class="form-control" type="text" name="email" placeholder="Correo">
+			</div>
+			
+			<div class="form-group text-center">
+				
+				
+			
+				 <label>Ingrese la Clave:</label> <input
+					type="password" id="defaultLoginFormPassword"
+					class="form-control mb-4" name="passw" placeholder="Clave">
+			</div>
+			
+			<div class="form-group text-center">
+				
+				
+		
+			<input type="submit" name="accion"
+				value="Iniciar Sesion"> <br>
+				
+					</div>
+
+			<div class=" row justify-content-center">
+				
+				<p id="account">
+				    
+				    
+					<a href="/Practica_de_laboratorio_01_Servlets_JSP_y_JDBC/html/CreateAccount.html">Registrar Usuario</a>
+				</p>
+			</div>
+
+		</form>
+	</div>
+
+
+
+
+
+
+
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+</body>
+</html>
