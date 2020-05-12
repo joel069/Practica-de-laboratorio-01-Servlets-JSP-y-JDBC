@@ -6,21 +6,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import datos.PersonaDAO;
-import modelo.Persona;
-import datos.DAOFactory;
 /**
- * Servlet implementation class RegistrarUsuario
+ * Servlet implementation class CerrarSesion
  */
-@WebServlet("/RegistrarUsuario")
-public class RegistrarUsuario extends HttpServlet {
+@WebServlet("/CerrarSesion")
+public class CerrarSesion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistrarUsuario() {
+    public CerrarSesion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +28,22 @@ public class RegistrarUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpServletRequest reqHttp= (HttpServletRequest)request;
+		HttpSession sesion=reqHttp.getSession();
+		System.out.println("Cerrando Sesion");
+		sesion.invalidate();
+		getServletContext().getRequestDispatcher("/publica/index.jsp").forward(request, response);
+		
+		
+		
+//		 if (sesion.getAttribute("iniciado") !=null) {
+//			 	System.out.println("EL FILTRO CONSEDE EL ACCESO");
+//				chain.doFilter(request, response);
+//			}else{
+//				System.out.println("El fitro marica dice que la sesion no esta iniciada");
+//				((HttpServletResponse)response).sendRedirect("/publica/login.jsp");
+//			}
 	}
 
 	/**
@@ -40,25 +53,7 @@ public class RegistrarUsuario extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		String cedula ="";
-		String nombre ="";
-		String apellido ="";
-		String correo ="";
-		String clave  ="";
 		
-		nombre = request.getParameter("nombre");
-		apellido = request.getParameter("apellido");
-		cedula = request.getParameter("cedula");
-		correo = request.getParameter("correo");
-		clave = request.getParameter("clave");
-		
-		PersonaDAO persoDAO = DAOFactory.getFactory().getPersonaDAO();
-			
-		Persona persona = new Persona(cedula, nombre, apellido, correo, clave);
-		
-		persoDAO.create(persona);
-		
-		getServletContext().getRequestDispatcher("/JSPs/UsuarioCreado.jsp").forward(request, response);
 	}
-  }
 
+}

@@ -7,7 +7,7 @@ public abstract class DAOFactory {
 		return factory;
 	}
 	
-	public abstract void createTables();
+	
 	public abstract PersonaDAO getPersonaDAO();
 	public abstract TelefonoDAO getTelefonoDAO();
 	

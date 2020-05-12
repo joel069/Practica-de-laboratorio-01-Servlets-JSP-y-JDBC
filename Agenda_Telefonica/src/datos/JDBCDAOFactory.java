@@ -5,11 +5,7 @@ import jdbc.JDBCTelefonoDAO;
 
 public class JDBCDAOFactory extends DAOFactory{
 	
-	@Override
-	public void createTables() {
-		this.getPersonaDAO().createTable();
-		this.getTelefonoDAO().createTable();
-	}
+	
 	
 	@Override 
 	public PersonaDAO getPersonaDAO() {

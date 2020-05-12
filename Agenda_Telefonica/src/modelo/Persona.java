@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class Persona implements Serializable{
 	
@@ -10,14 +11,13 @@ public class Persona implements Serializable{
 	private String apellido;
 	private String correo;
 	private String clave;
+	private Set<Telefono> telefonos;
 	
 	
 	
 	public Persona() {
 		
 	}
-	
-	
 	
 	public Persona(String cedula, String nombre, String apellido, String correo, String clave) {
 		super();
@@ -61,10 +61,20 @@ public class Persona implements Serializable{
 		this.clave = clave;
 	}
 	
-	
+	public Set<Telefono> getTelefonos() {
+		return telefonos;
+	}
+
+	public void setTelefonos(Set<Telefono> telefonos) {
+		this.telefonos = telefonos;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo
-				+ ", clave=" + clave + "]";
+				+ ", clave=" + clave + ", telefonos=" + telefonos + "]";
 	}
+
+	
 }

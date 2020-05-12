@@ -14,12 +14,12 @@
 	<div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
-			<div><a href="/Agenda_Telefonica/JSPs/Inicio.jsp" style="font-size:x-large">Agenda</a><span></span></div>
+			<div><a href="/Agenda_Telefonica/JSPs/IndexUsuario.jsp" style="font-size:x-large">Agenda</a><span></span></div>
 		</div>
 		<br>
 		<div class="login">
-				<input type="text" placeholder="username" name="user" required><br>
-				<input type="password" placeholder="password" name="password" required><br>
+				<input type="text" placeholder="username" name="correo" required><br>
+				<input type="password" placeholder="password" name="clave" required><br>
 				<button type="submit" name="resp" value="Login">Login</button>
 		</div>
 </form>

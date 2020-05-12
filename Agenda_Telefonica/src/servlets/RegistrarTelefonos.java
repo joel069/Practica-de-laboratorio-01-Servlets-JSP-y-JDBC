@@ -7,20 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import datos.PersonaDAO;
-import modelo.Persona;
 import datos.DAOFactory;
+import datos.TelefonoDAO;
+import modelo.Persona;
+import modelo.Telefono;
+
 /**
- * Servlet implementation class RegistrarUsuario
+ * Servlet implementation class RegistrarTelefonos
  */
-@WebServlet("/RegistrarUsuario")
-public class RegistrarUsuario extends HttpServlet {
+@WebServlet("/RegistrarTelefonos")
+public class RegistrarTelefonos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistrarUsuario() {
+    public RegistrarTelefonos() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +30,7 @@ public class RegistrarUsuario extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -40,25 +42,18 @@ public class RegistrarUsuario extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		String cedula ="";
-		String nombre ="";
-		String apellido ="";
-		String correo ="";
-		String clave  ="";
+		String numero = request.getParameter("numero");
+		String tipo = request.getParameter("tipo");
+		String operadora = request.getParameter("operadora");
+		String cedula = request.getParameter("cedula");
+		Persona persona = new Persona(cedula,null,null,null,null);
+		Telefono telefono = new Telefono (0,numero,tipo,operadora);
+		telefono.setPersona(persona);
+		TelefonoDAO telDAO = DAOFactory.getFactory().getTelefonoDAO();
+		telDAO.create(telefono);
 		
-		nombre = request.getParameter("nombre");
-		apellido = request.getParameter("apellido");
-		cedula = request.getParameter("cedula");
-		correo = request.getParameter("correo");
-		clave = request.getParameter("clave");
-		
-		PersonaDAO persoDAO = DAOFactory.getFactory().getPersonaDAO();
-			
-		Persona persona = new Persona(cedula, nombre, apellido, correo, clave);
-		
-		persoDAO.create(persona);
-		
-		getServletContext().getRequestDispatcher("/JSPs/UsuarioCreado.jsp").forward(request, response);
+	
+	    getServletContext().getRequestDispatcher("/JSPs/TelefonoRegistrado.jsp").forward(request, response);
+	  
 	}
-  }
-
+}

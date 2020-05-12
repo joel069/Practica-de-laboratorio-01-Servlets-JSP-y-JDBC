@@ -9,7 +9,7 @@
 <link rel="stylesheet"  href="/Practica-1/CONFIG/Style/style.css" type="text/css">
 </head>
 <body>
-	<form action="/Agenda_Telefonica/RegistrarUsuario" method="POST">
+	<form action="/Agenda_Telefonica/RegistrarTelefonos" method="POST">
 	<div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
@@ -17,13 +17,12 @@
 		</div>
 		<br>
 		<div class="login">
-				<h1>Registrar Usuario</h1><br>
-				<input type="text" placeholder="Cedula" name="cedula" required><br>
-				<input type="text" placeholder="Nombre" name="nombre" required><br>
-				<input type="text" placeholder="Apellido" name="apellido" required><br>
-				<input type="text" placeholder="Correo" name="correo" required><br>
-				<input type="password" placeholder="Password" name="clave" required><br>
-				<button type="submit" name="resp" value="Registrarse">Registrarse</button>
+				<h1>Registrar Telefono</h1><br>
+				<input type="text" placeholder="Numero" name="numero" required><br>
+				<input type="text" placeholder="Tipo" name="tipo" required><br>
+				<input type="text" placeholder="Operadora" name="operadora" required><br>
+				
+				<button type="submit" name="resp" value="Registrar">Registrarse</button>
 		</div>
 </form>
 </body>

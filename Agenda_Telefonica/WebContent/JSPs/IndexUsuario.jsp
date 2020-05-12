@@ -19,6 +19,8 @@
 	<div class="topnav">
 		<a href="">Home</a>
 		<a href="">Buscar</a>
+		<a href="/Agenda_Telefonica/JSPs/CrearTelefonos.jsp">Registrar Telefono</a>
+		
 		<a href="" style="float:right">Sing out</a>
 	</div>
 	

@@ -1,15 +1,19 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import datos.DAOFactory;
 import datos.PersonaDAO;
 import datos.TelefonoDAO;
+import modelo.Persona;
 
 /**
  * Servlet implementation class Login
@@ -31,8 +35,37 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String correo = request.getParameter("correo");
+		String clave = request.getParameter("clave");
+		
+		PersonaDAO persoDAO = DAOFactory.getFactory().getPersonaDAO();
+		List<Persona> list = persoDAO.find();
+		Persona personaLog = null;
+		for (Persona persona : list) {
+			if (persona.getCorreo().equals(correo) && persona.getClave().equals(clave)) {
+				System.out.println("Datos Insertados Corectamente...!!!");
+				personaLog=persona;				
+				HttpSession sesion = request.getSession(true);//el usuario a iniciado sesion
+				request.getSession().setAttribute("iniciado", sesion);			
+				String url=null;
+				
+				try {
+					request.setAttribute("persona", personaLog);
+					url="privado/agenda.jsp";
+				
+		       }catch(Exception e) {
+		    	   
+		    	   System.out.println(">>>WARNING (LOGINSERVEL):DOPOS: T"+ e.getMessage());
+		    	   
+		       }
+		    	   getServletContext().getRequestDispatcher(url).forward(request, response);
+		    	   break;
+		       }
+			 
+		}
 	}
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,32 +74,7 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		PersonaDAO persoDAO = DAOFactory.getFactory().getPersonaDAO();
-		String correo = "";
-		String clave = "";
-		int indice = 0;
 		
-        String resp = request.getParameter("resp");
-		
-		if(resp.equals("Login")) {
-			correo = request.getParameter("correo");
-			clave = request.getParameter("clave");
-			
-			indice = persoDAO.buscar(correo, clave);
-			System.out.println(indice);
-		}
-		try {
-			if(indice>0) {
-				TelefonoDAO telfDAO = DAOFactory.getFactory().getTelefonoDAO();
-				
-				request.setAttribute("telefono", telfDAO.find());
-				getServletContext().getRequestDispatcher("ListarTelefonos.java").forward(request, response);
-			}else {
-				getServletContext().getRequestDispatcher("/Agenda_Telefonica/Inicio.jsp").forward(request, response);
-			}
-		}catch(Exception e) {
-			System.out.println(">>>WARNING (LOGINSERVEL):DOPOS: T"+e.getMessage());
-		}
 	}
 
 }

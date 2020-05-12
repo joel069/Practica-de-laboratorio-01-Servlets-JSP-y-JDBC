@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class ContextJDBC {
 	
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-	private static final String URL = "jdbc:mysql://localhost:3306/Agenda";
+	private static final String URL = "jdbc:mysql://localhost:3306/Agenda?serverTimezone=UTC";
 	private static final String USER = "root";
 	private static final String PASS = "root";
 	private static ContextJDBC jdbc1 = null;

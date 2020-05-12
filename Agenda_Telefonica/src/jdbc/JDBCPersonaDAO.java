@@ -4,31 +4,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
+import datos.DAOFactory;
 import datos.PersonaDAO;
-
 import modelo.Persona;
+import modelo.Telefono;;
 
 public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, String> implements PersonaDAO {
 	
-	@Override
-	public void createTable() {
-		conexionUno.update("DROP TABLE IF EXISTS Persona");
-		conexionUno.update("CREATE TABLE Persona(" + "Cedula STRING NOT NULL, " + "Nombre VARCHAR(255), "
-				+ "Apellido VARCHAR(255), " + "Correo VARCHAR(255)," + "Clave VARCHAR(255) NOT NULL," + "PRIMARY KEY (Cedula))");
-	}
-
+	
 	@Override
 	public void create(Persona persona) {
-		conexionUno.update("INSERT Persona VALUES (" + persona.getCedula() + ", '" + persona.getNombre() + "', '"
-				+ persona.getApellido() + "," + persona.getCorreo() + "," + persona.getClave() + "')");
+		conexionUno.update("INSERT Persona VALUES ('" + persona.getCedula() + " ' ,' " + persona.getNombre() + " ', '"
+				+ persona.getApellido() + " ',' " + persona.getCorreo() + " ', '" + persona.getClave() + " ' ) ;");
+	    Set<Telefono> telefonos = persona.getTelefonos();
+	    if(telefonos != null) {
+	    	for(Telefono telefono : telefonos)
+	    		DAOFactory.getFactory().getTelefonoDAO().create(telefono);
+	    }
 	}
 
 	
 	@Override
-	public Persona read(String id) {
+	public Persona buscarCorreo(String correo) {
 		Persona persona = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM Persona WHERE Cedula=" + id);
+		ResultSet rs = conexionUno.query("SELECT * FROM Persona WHERE correo=" + correo+"';");
 		try {
 			if (rs != null && rs.next()) {
 				persona = new Persona(rs.getString("cedula"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"));
@@ -36,6 +38,52 @@ public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, String> implements 
 		} catch (SQLException e) {
 			System.out.println(">>>WARNING (JDBCPersonaDAO:read): " + e.getMessage());
 		}
+		if (persona==null) {
+			
+			return null;
+		}
+		
+		Set<Telefono> telefonos=DAOFactory.getFactory().getTelefonoDAO().buscarCedula(persona.getCedula());
+		if (telefonos !=null) {
+			Set<Telefono> telefonosList=new HashSet<Telefono>();
+			for (Telefono telefono : telefonos) {
+				telefono.setPersona(persona);
+				telefonosList.add(telefono);				
+			}
+			persona.setTelefonos(telefonosList);
+		}
+		
+
+		return persona;
+		
+	}
+	
+	@Override
+	public Persona read(String cedula) {
+		Persona persona = null;
+		ResultSet rs = conexionUno.query("SELECT * FROM Persona WHERE correo=" + cedula+"';");
+		try {
+			if (rs != null && rs.next()) {
+				persona = new Persona(rs.getString("cedula"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"));
+			}
+		} catch (SQLException e) {
+			System.out.println(">>>WARNING (JDBCPersonaDAO:read): " + e.getMessage());
+		}
+		if (persona==null) {
+			
+			return null;
+		}
+		
+		Set<Telefono> telefonos=DAOFactory.getFactory().getTelefonoDAO().buscarCedula(persona.getCedula());
+		if (telefonos !=null) {
+			Set<Telefono> telefonosList=new HashSet<Telefono>();
+			for (Telefono telefono : telefonos) {
+				telefono.setPersona(persona);
+				telefonosList.add(telefono);				
+			}
+			persona.setTelefonos(telefonosList);
+		}
+		
 
 		return persona;
 		
@@ -52,7 +100,7 @@ public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, String> implements 
 	@Override
 	public void delete(Persona persona) {
 		
-		conexionUno.update("DELETE FROM Persona WHERE id = " + persona.getCedula());	
+		conexionUno.update("DELETE FROM Persona WHERE cedula = " + persona.getCedula());	
 	}
 
 	@Override
@@ -61,42 +109,32 @@ public class JDBCPersonaDAO extends  JDBCGenericDAO<Persona, String> implements 
 		ResultSet rs = conexionUno.query("SELECT * FROM Persona");
 		try {
 			while (rs.next()) {
-				list.add(new Persona(rs.getString("cedula"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave")));
+				Persona persona =new Persona(rs.getString("cedula"), rs.getString("nombre"), rs.getString("apellido"), rs.getString("correo"), rs.getString("clave"));
+			Set<Telefono> telefonos= DAOFactory.getFactory().getTelefonoDAO().buscarCedula(persona.getCedula());
+			if (telefonos != null) {
+				
+				Set<Telefono> telf= new HashSet<Telefono>();
+				for (Telefono telefono : telefonos) {
+					telefono.setPersona(persona);
+					telf.add(telefono);
+					persona.setTelefonos(telf);
+				}
+			}
+			
+			list.add(persona);
 			}
 			
 		}catch(SQLException e){
 			System.out.println(">>>WARNING (JDBCPersonaDAO:find): " + e.getMessage());
-		}for(Persona per: list) {
-			System.out.println(per.getCedula()+" , "+ per.getNombre() + "," + per.getApellido());
+			
+			return null;
+			
 		}
+		
 		return list;
 	}
 	
-	@Override
-	public int buscar(String correo, String clave) {
-		// TODO Auto-generated method stub
-		
-		System.out.println("Correo:...."+ correo.toString());
-		int indice=0;
-		Persona per = null;
-		ResultSet rs = conexionUno.query("SELECT * FROM Persona where correo="+"'"+correo+"'"+"AND clave="+"'"+clave+"'");
-		try {
-			if( rs != null && rs.next()) {
-				indice=1;
-				
-			}
-		}catch(SQLException e) {
-			System.out.println(">>>WARNING (JDBCPersonaDAO): buscar" + e.getMessage());
-		}
-		
-		return indice;
-	}
 	
-	@Override
-	public String cedula(String cedu) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 }
